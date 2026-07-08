@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Situs Belajar Coding</title>
+    <link rel="stylesheet" href="gaya.css">
+</head>
+<body>
+
+<!-- LAYAR LOGIN -->
+<div id="layarMasuk" class="layar-penuh">
+    <div class="kotak-tengah">
+        <h1>🚀 Situs Belajar Coding</h1>
+
+        <div id="formMasuk">
+            <h2>Masuk ke Akun</h2>
+            <input type="text" id="namaPengguna" placeholder="Nama Pengguna" class="isian">
+            <input type="password" id="kataSandi" placeholder="Kata Sandi" class="isian">
+            <button id="btnMasuk" class="btn-hijau">Masuk Sekarang</button>
+            <p class="tukar" id="keDaftar">Belum punya akun? Buat baru</p>
+            <p id="pesan" class="pesan"></p>
+        </div>
+
+        <div id="formDaftar" class="sembunyi">
+            <h2>Buat Akun Baru</h2>
+            <input type="text" id="daftarNama" placeholder="Nama Pengguna" class="isian">
+            <input type="password" id="daftarSandi" placeholder="Kata Sandi" class="isian">
+            <input type="password" id="ulangSandi" placeholder="Ulangi Kata Sandi" class="isian">
+            <button id="btnDaftar" class="btn-hijau">Daftar Akun</button>
+            <p class="tukar" id="keMasuk">Sudah punya akun? Masuk di sini</p>
+        </div>
+    </div>
+</div>
+
+<!-- HALAMAN UTAMA -->
+<div id="halamanUtama" class="sembunyi">
+    <nav class="bar-atas">
+        <div class="judul">💻 Belajar Coding</div>
+        <div class="nav-tombol">
+            <button class="nav-btn aktif" data-bagian="beranda">🏠 Beranda</button>
+            <button class="nav-btn" data-bagian="materi">📚 Materi</button>
+            <button class="nav-btn" data-bagian="editor">✏️ Editor</button>
+            <button class="nav-btn" data-bagian="terminal">⌨️ Terminal</button>
+            <button class="nav-btn" data-bagian="website">🌐 Buat Web</button>
+            <button id="btnGantiTema" class="btn-kecil">🎨 Tema</button>
+            <button id="btnKeluar" class="btn-kecil-merah">🚪 Keluar</button>
+        </div>
+    </nav>
+
+    <main class="isi">
+        <!-- BERANDA -->
+        <section class="bagian" id="bagBeranda">
+            <h2>Halo, <span id="namaUser"></span>! 👋</h2>
+            <p class="penjelasan mt-2">Semua fitur sudah aktif dan siap digunakan. Kamu bisa menulis kode dengan berbagai bahasa, membuat logika keputusan, perhitungan rumit, hingga menyusun halaman situs web.</p>
+            
+            <div class="daftar-fitur mt-3">
+                <div class="kartu-fitur">
+                    <h4>✅ Semua Tombol Berfungsi</h4>
+                    <p>Tidak ada tombol yang bermasalah, semua merespon dengan baik.</p>
+                </div>
+                <div class="kartu-fitur">
+                    <h4>💻 Semua Bahasa Pemrograman</h4>
+                    <p>HTML, CSS, JavaScript, Python, C, C++, Java, PHP, Ruby, Go, dan tambahan <strong>Bash/Shell</strong>.</p>
+                </div>
+                <div class="kartu-fitur">
+                    <h4>🧠 Logika & Hitungan</h4>
+                    <p>Mendukung keputusan, percabangan, perulangan, hingga rumus matematika yang rumit.</p>
+                </div>
+                <div class="kartu-fitur">
+                    <h4>💾 Simpan & Riwayat</h4>
+                    <p>Kode yang pernah ditulis tersimpan otomatis di perangkatmu.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- MATERI -->
+        <section class="bagian sembunyi" id="bagMateri">
+            <h2>📚 Materi Belajar Lengkap</h2>
+            <div class="daftar-materi mt-2">
+                <div class="kotak-materi" onclick="bukaMateri('html')">
+                    <h4>1. HTML & CSS</h4>
+                    <p>Membuat struktur dan mempercantik tampilan halaman.</p>
+                </div>
+                <div class="kotak-materi" onclick="bukaMateri('js')">
+                    <h4>2. JavaScript</h4>
+                    <p>Membuat interaksi dan logika keputusan.</p>
+                </div>
+                <div class="kotak-materi" onclick="bukaMateri('python')">
+                    <h4>3. Python</h4>
+                    <p>Pemrograman umum dan perhitungan ilmiah.</p>
+                </div>
+                <div class="kotak-materi" onclick="bukaMateri('bash')">
+                    <h4>4. Bash/Shell (+1 Bahasa)</h4>
+                    <p>Perintah dasar pengelolaan sistem.</p>
+                </div>
+            </div>
+            <div id="isiMateri" class="isi-materi mt-3 sembunyi"></div>
+        </section>
+
+        <!-- EDITOR KODE -->
+        <section class="bagian sembunyi" id="bagEditor">
+            <div class="bar-atas-editor">
+                <select id="pilihBahasa">
+                    <option value="html">HTML & CSS</option>
+                    <option value="js"> JavaScript</option>
+                    <option value="py">Python</option>
+                    <option value="c">Bahasa C</option>
+                    <option value="cpp"> C++</option>
+                    <option value="java">Java</option>
+                    <option value="php">PHP</option>
+                    <option value="ruby">Ruby</option>
+                    <option value="go">Go</option>
+                    <option value="bash">Bash/Shell (+1)</option>
+                </select>
+                <div>
+                    <button id="btnCekKode" class="btn-kecil">🔍 Cek</button>
+                    <button id="btnJalankan" class="btn-hijau">▶️ Jalankan</button>
+                    <button id="btnSimpan" class="btn-biru">💾 Simpan</button>
+                    <button id="btnSalin" class="btn-kecil">📋 Salin</button>
+                    <button id="btnBersih" class="btn-kecil">🧹 Bersih</button>
+                </div>
+            </div>
+            <div class="dua-kolom">
+                <textarea id="areaKode" class="area-kode" placeholder="Tulis kode kamu di sini..."></textarea>
+                <div>
+                    <div id="hasilKode" class="area-hasil">Hasil akan muncul di sini</div>
+                    <div id="laporanCek" class="laporan mt-2 sembunyi"></div>
+                </div>
+            </div>
+            <div class="mt-3">
+                <h4>Riwayat Kode Tersimpan:</h4>
+                <div id="daftarSimpanan" class="daftar-simpanan mt-1"></div>
+            </div>
+        </section>
+
+        <!-- TERMINAL -->
+        <section class="bagian sembunyi" id="bagTerminal">
+            <h2>⌨️ Terminal Perintah</h2>
+            <div class="kotak-terminal mt-2">
+                <div id="riwayatTerminal"></div>
+                <div class="baris-input">
+                    <span>$</span>
+                    <input type="text" id="inputTerminal" placeholder="Ketik perintah...">
+                </div>
+            </div>
+        </section>
+
+        <!-- BUAT WEBSITE -->
+        <section class="bagian sembunyi" id="bagWebsite">
+            <div class="kotak-peringatan">
+                ⚠️ <strong>Catatan Penting:</strong> Halaman ini hanya untuk membuat, mengedit, dan melihat hasil desain situs secara lokal. <u>Situs yang dibuat di sini tidak bisa dipublikasikan secara langsung ke internet.</u> Jika ingin menerbitkan ke internet, kamu bisa menyalin kode yang sudah jadi lalu mengunggahnya ke layanan penyedia hosting situs gratis seperti Netlify, Vercel, atau GitHub Pages.
+            </div>
+
+            <div class="tab">
+                <button class="tab-btn aktif" data-tab="html">HTML</button>
+                <button class="tab-btn" data-tab="css">CSS</button>
+                <button class="tab-btn" data-tab="js">JS</button>
+            </div>
+            <textarea id="kodeHtml" class="area-kode"><html>
+<head><title>Situs Saya</title></head>
+<body><h1>Halo Dunia!</h1><p>Ini halaman pertama saya.</p></body>
+</html></textarea>
+            <textarea id="kodeCss" class="area-kode sembunyi">body { background: #f0f9ff; font-family: sans-serif; padding: 20px; }
+h1 { color: #0369a1; }</textarea>
+            <textarea id="kodeJs" class="area-kode sembunyi">alert('Selamat datang di situs saya!');</textarea>
+
+            <div class="tombol-web mt-2">
+                <button id="btnCekWeb" class="btn-biru">🔍 Cek Kesalahan</button>
+                <button id="btnLihatWeb" class="btn-hijau">👁️ Lihat Hasil</button>
+                <button id="btnSalinSemuaKode" class="btn-kecil">📋 Salin Semua Kode</button>
+            </div>
+            <div id="laporanWeb" class="laporan mt-2 sembunyi"></div>
+            <iframe id="tampilanWeb" class="bingkai-web mt-2"></iframe>
+        </section>
+    </main>
+</div>
+
+<!-- MODAL GANTI TEMA -->
+<div id="modalTema" class="modal sembunyi">
+    <div class="isi-modal">
+        <div class="atas-modal">
+            <h3>Pilih Tema Tampilan</h3>
+            <span class="tutup-modal">&times;</span>
+        </div>
+        <div class="pilihan-tema">
+            <button onclick="terapkanTema('terang')" class="opsi-tema">☀️ Terang</button>
+            <button onclick="terapkanTema('gelap')" class="opsi-tema">🌙 Gelap</button>
+            <button onclick="terapkanTema('hijau')" class="opsi-tema">🌿 Hijau</button>
+            <button onclick="terapkanTema('biru')" class="opsi-tema">💙 Biru</button>
+        </div>
+    </div>
+</div>
+
+<script src="logika.js"></script>
+</body>
+</html>
